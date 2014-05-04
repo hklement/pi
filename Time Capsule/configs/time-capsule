@@ -1,0 +1,14 @@
+#!/bin/bash
+case "$1" in
+  start)
+    mount -t hfsplus -o force /dev/sda2 /media/Freecom/
+    service avahi-daemon start
+    service netatalk start
+  ;;
+  stop)
+    service avahi-daemon stop
+    service netatalk stop
+    umount -l /media/Freecom/
+  ;;
+esac
+exit 0
